@@ -26,10 +26,10 @@ body {
   position: absolute;
   top: 0;
   width: 100%;
-  height: 80px;
+  height: 200px;
   /* background-color: antiquewhite; */
   z-index: 0;
-  max-width: 600px;
+  max-width: 700px;
 }
 
 .header img {
@@ -43,16 +43,16 @@ body {
 
 .mainWrapper {
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   justify-content: space-between;
-  max-width: 600px;
+  max-width: 700px;
   width: 100%;
   box-sizing: border-box;
 }
 
 .shadow-box-container {
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
   flex-shrink: 0;
   order: 2;
 }
@@ -192,6 +192,7 @@ body {
     gap: 40px;
     height: 100%;
     justify-content: center;
+    align-items: center;
   }
 
   .shadow-box-container {
@@ -213,6 +214,7 @@ body {
 
   .header {
     max-width: 300px;
+    height: 80px;
   }
 
   .header p {
