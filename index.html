@@ -8,15 +8,15 @@
   </head>
   <body>
     <div class="header">
-      <img src="./assets/icons/ns_logo.png" alt="" />
+      <img src="./assets/icons/ns_logo.png" alt="Logo" />
       <p>CSS Shadow generator</p>
     </div>
+
     <div class="mainWrapper">
       <div class="shadow-box-container">
         <div id="shadowBox" class="shadow-box">
           <img src="./assets/icons/copy.png" id="boxContent" alt="copy" />
         </div>
-
         <div id="lightSource" class="light-source"></div>
       </div>
 
@@ -25,36 +25,39 @@
           <label>Light angle: <span id="angleValue" class="editable-value" data-control="angle">45°</span></label>
           <input type="range" id="angle" min="0" max="360" value="45" />
         </div>
+
         <div class="control">
-          <label>Light height: <span id="heightValue" class="editable-value" data-control="height">0%</span></label>
-          <input type="range" id="height" min="0" max="100" value="0" />
+          <label>Elevation: <span id="elevationValue" class="editable-value" data-control="elevation">0%</span></label>
+          <input type="range" id="elevation" min="0" max="100" value="0" />
         </div>
+
         <div class="control">
           <label>Light size: <span id="lightSizeValue" class="editable-value" data-control="lightSize">0%</span></label>
           <input type="range" id="lightSize" min="0" max="100" value="0" />
         </div>
+
         <div class="control">
           <label>Light power: <span id="globalShadowIntensityValue" class="editable-value" data-control="globalShadowIntensity">100%</span></label>
           <input type="range" id="globalShadowIntensity" min="0" max="100" value="100" />
         </div>
+
         <div class="control">
           <label>Global illumination: <span id="giIntensityValue" class="editable-value" data-control="giIntensity">0%</span></label>
           <input type="range" id="giIntensity" min="0" max="100" value="0" />
         </div>
-        <div class="control">
-          <label>Elevate object: <span id="elevateValue" class="editable-value" data-control="elevate">0%</span></label>
-          <input type="range" id="elevate" min="0" max="100" value="0" />
-        </div>
+
         <div class="control">
           <label>Border radius: <span id="borderRadiusValue" class="editable-value" data-control="borderRadius">24px</span></label>
           <input type="range" id="borderRadius" min="0" max="100" value="24" />
         </div>
+
         <div class="control">
           <label>Color:</label>
-          <input type="color" id="objectColor" value="#FFFFFF" />
+          <input type="color" id="objectColor" value="#ffffff" />
         </div>
       </div>
     </div>
+
     <script src="script.js"></script>
   </body>
 </html>

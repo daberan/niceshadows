@@ -3,7 +3,7 @@ const boxContent = document.getElementById("boxContent");
 const controls = {};
 const valueDisplays = {};
 
-["angle", "height", "lightSize", "borderRadius", "objectColor", "giIntensity", "globalShadowIntensity", "elevate"].forEach((control) => {
+["angle", "elevation", "lightSize", "borderRadius", "objectColor", "giIntensity", "globalShadowIntensity"].forEach((control) => {
   controls[control] = document.getElementById(control);
   valueDisplays[control] = document.getElementById(control + "Value");
 });
@@ -22,12 +22,24 @@ function lerp(low, high, t) {
 }
 
 function calculateShadow() {
-  const height = controls.height.value / 100;
+  const elevationValue = controls.elevation.value / 100;
+
+  // New interpolation logic
+  let height, elevate;
+  if (elevationValue <= 0.5) {
+    // From 0% to 50%, interpolate from (height: 1, elevate: 0) to (height: 0, elevate: 0)
+    height = 1 - elevationValue * 2;
+    elevate = 0;
+  } else {
+    // From 50% to 100%, interpolate from (height: 0, elevate: 0) to (height: 0, elevate: 1)
+    height = 0;
+    elevate = (elevationValue - 0.5) * 2;
+  }
+
   const angle = (controls.angle.value * Math.PI) / 180;
   const lightSize = controls.lightSize.value / 100;
   const globalShadowIntensity = controls.globalShadowIntensity.value / 100;
   const giIntensity = controls.giIntensity.value / 100;
-  const elevate = controls.elevate.value / 100;
 
   const regularShadow = [];
   const giShadow = [];
@@ -83,11 +95,10 @@ function updateShadowBox() {
 const suffixes = {
   angle: "°",
   borderRadius: "px",
-  height: "%",
+  elevation: "%",
   lightSize: "%",
   globalShadowIntensity: "%",
   giIntensity: "%",
-  elevate: "%",
 };
 
 Object.keys(controls).forEach((control) => {
@@ -225,6 +236,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   controls.giIntensity.value = 0;
   valueDisplays.giIntensity.textContent = "0%";
+
+  // Set initial value for elevation
+  controls.elevation.value = 50;
+  valueDisplays.elevation.textContent = "50%";
 });
 
 // Initial update
