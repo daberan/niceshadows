@@ -1,0 +1,237 @@
+@font-face {
+  font-family: "Inter";
+  src: url("./assets/fonts/Inter.ttf");
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #d3d3d3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+}
+.header {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 80px;
+  /* background-color: antiquewhite; */
+  z-index: 0;
+  max-width: 600px;
+}
+
+.header img {
+  width: 40px;
+}
+
+.header p {
+  font-weight: bold;
+  margin-left: 8px;
+}
+
+.mainWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 600px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.shadow-box-container {
+  width: 200px;
+  height: 200px;
+  flex-shrink: 0;
+  order: 2;
+}
+
+.shadow-box {
+  width: 100%;
+  height: 100%;
+  will-change: box-shadow, border-radius, background-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  background-color: #ffffff;
+  user-select: none; /* Prevent text selection */
+  -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
+}
+
+#boxContent {
+  height: 24px;
+  position: absolute;
+  z-index: 1;
+  opacity: 0.1;
+  transition: opacity 0.1s ease-out;
+}
+
+.copy-message {
+  font-size: 14px; /* Smaller text */
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 300px;
+  order: 1;
+}
+
+.control {
+  display: flex;
+  flex-direction: column;
+}
+
+.control label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.control input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 2px;
+  background: #000;
+  outline: none;
+  margin: 10px 0;
+}
+
+.control input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 2px;
+  height: 20px;
+  background: #000;
+  cursor: pointer;
+}
+
+.control input[type="range"]::-moz-range-thumb {
+  width: 2px;
+  height: 20px;
+  background: #000;
+  cursor: pointer;
+  border: none;
+}
+
+.control input[type="color"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 30px;
+  border: 2px solid black;
+  padding: 0;
+  background: none;
+  border-radius: 0;
+}
+
+.control input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.control input[type="color"]::-webkit-color-swatch {
+  border: none;
+  border-radius: 0;
+}
+
+.control input[type="color"]::-moz-color-swatch {
+  border: none;
+  border-radius: 0;
+}
+
+.editable-value {
+  cursor: text;
+  display: inline-block; /* Ensures proper sizing */
+}
+
+.editable-value input {
+  text-align: right;
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+  max-width: 100%; /* Prevents overflow */
+}
+
+.editable-value input::-webkit-outer-spin-button,
+.editable-value input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .mainWrapper {
+    flex-direction: column;
+    gap: 40px;
+    height: 100%;
+    justify-content: center;
+  }
+
+  .shadow-box-container {
+    width: 150px;
+    height: 150px;
+    order: 1;
+  }
+
+  .controls {
+    width: 100%;
+    max-width: 300px;
+    order: 2;
+    gap: 10px;
+  }
+
+  .control label {
+    margin-bottom: 0px;
+  }
+
+  .header {
+    max-width: 300px;
+  }
+
+  .header p {
+    display: none;
+  }
+}
+
+@media (max-width: 380px) {
+  .shadow-box-container {
+    width: 120px;
+    height: 120px;
+  }
+
+  .controls {
+    gap: 0px;
+  }
+
+  .control label {
+    font-size: 12px;
+    margin-bottom: 0px;
+  }
+}
