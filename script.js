@@ -21,19 +21,24 @@ function lerp(low, high, t) {
   return low + (high - low) * t;
 }
 
+function easeInOutQuad(t) {
+  return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+}
+
 function calculateShadow() {
   const elevationValue = controls.elevation.value / 100;
 
-  // New interpolation logic
   let height, elevate;
   if (elevationValue <= 0.5) {
     // From 0% to 50%, interpolate from (height: 1, elevate: 0) to (height: 0, elevate: 0)
-    height = 1 - elevationValue * 2;
+    const t = easeInOutQuad(elevationValue * 2);
+    height = 1 - t;
     elevate = 0;
   } else {
     // From 50% to 100%, interpolate from (height: 0, elevate: 0) to (height: 0, elevate: 1)
     height = 0;
-    elevate = (elevationValue - 0.5) * 2;
+    const t = easeInOutQuad((elevationValue - 0.5) * 2);
+    elevate = t;
   }
 
   const angle = (controls.angle.value * Math.PI) / 180;

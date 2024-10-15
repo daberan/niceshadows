@@ -14,11 +14,18 @@
     </div>
 
     <div class="mainWrapper">
-      <div class="shadow-box-container">
-        <div id="shadowBox" class="shadow-box">
-          <img src="./assets/icons/copy.png" id="boxContent" alt="copy" />
+      <div class="rightContainer">
+        <div class="logoContainer">
+          <img src="./assets/icons/ns_logo.png" alt="Logo" />
+          <p>CSS Shadow generator</p>
         </div>
-        <div id="lightSource" class="light-source"></div>
+
+        <div class="shadow-box-container">
+          <div id="shadowBox" class="shadow-box">
+            <img src="./assets/icons/copy.png" id="boxContent" alt="copy" />
+          </div>
+          <div id="lightSource" class="light-source"></div>
+        </div>
       </div>
 
       <div class="controls">
@@ -33,7 +40,7 @@
         </div>
 
         <div class="control">
-          <label>Light size: <span id="lightSizeValue" class="editable-value" data-control="lightSize">0%</span></label>
+          <label>Softness: <span id="lightSizeValue" class="editable-value" data-control="lightSize">0%</span></label>
           <input type="range" id="lightSize" min="0" max="100" value="0" />
         </div>
 
