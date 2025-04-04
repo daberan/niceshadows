@@ -30,12 +30,10 @@ function calculateShadow() {
 
   let height, elevate;
   if (elevationValue <= 0.5) {
-    // From 0% to 50%, interpolate from (height: 1, elevate: 0) to (height: 0, elevate: 0)
     const t = easeInOutQuad(elevationValue * 2);
     height = 1 - t;
     elevate = 0;
   } else {
-    // From 50% to 100%, interpolate from (height: 0, elevate: 0) to (height: 0, elevate: 1)
     height = 0;
     const t = easeInOutQuad((elevationValue - 0.5) * 2);
     elevate = t;
@@ -131,19 +129,16 @@ function makeValuesEditable() {
 
       const contentWidth = (currentValue.length + suffix.length + 1) * 8 + 16;
       input.style.width = `${contentWidth}px`;
-
       input.addEventListener("blur", function () {
         updateValue(control, this.value);
         this.parentNode.innerHTML = `<span id="${control}Value">${this.value}${suffix}</span>`;
       });
-
       input.addEventListener("keypress", function (e) {
         if (e.key === "Enter") {
           updateValue(control, this.value);
           this.blur();
         }
       });
-
       this.innerHTML = "";
       this.appendChild(input);
       input.focus();
@@ -165,13 +160,11 @@ function copyShadowCSS() {
   if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard.writeText(cssCode).then(showCopyMessage, showCopyError);
   } else {
-    // Fallback for browsers that don't support the Clipboard API
     const textArea = document.createElement("textarea");
     textArea.value = cssCode;
     document.body.appendChild(textArea);
     textArea.select();
     try {
-      document.execCommand("copy");
       showCopyMessage();
     } catch (err) {
       showCopyError();
@@ -189,7 +182,6 @@ function showCopyMessage() {
   boxContent.style.opacity = "0";
   shadowBox.appendChild(messageElement);
 
-  // Trigger reflow to ensure the opacity transition works
   messageElement.offsetHeight;
   messageElement.style.opacity = "1";
 
@@ -198,18 +190,16 @@ function showCopyMessage() {
     setTimeout(() => {
       shadowBox.removeChild(messageElement);
       boxContent.style.opacity = "0.1";
-    }, 500); // Wait for fade out to complete before removing
-  }, 1500); // Show message for 1.5 seconds before fading out
+    }, 500);
+  }, 1500);
 }
 
 function showCopyError() {
   alert("Failed to copy CSS code. Please try again.");
 }
-
-// Use both click and touch events for copying
 shadowBox.addEventListener("click", copyShadowCSS);
 shadowBox.addEventListener("touchend", (event) => {
-  event.preventDefault(); // Prevent default touch behavior
+  event.preventDefault();
   copyShadowCSS();
 });
 
@@ -224,7 +214,6 @@ function handleTouch(event) {
 
   slider.value = Math.max(slider.min, Math.min(slider.max, value));
 
-  // Trigger the input event to update any listeners
   const inputEvent = new Event("input", { bubbles: true });
   slider.dispatchEvent(inputEvent);
 }
@@ -242,10 +231,7 @@ document.addEventListener("DOMContentLoaded", () => {
   controls.giIntensity.value = 0;
   valueDisplays.giIntensity.textContent = "0%";
 
-  // Set initial value for elevation
   controls.elevation.value = 50;
   valueDisplays.elevation.textContent = "50%";
 });
-
-// Initial update
 updateShadowBox();

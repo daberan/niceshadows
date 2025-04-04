@@ -87,8 +87,8 @@ body {
   cursor: pointer;
   position: relative;
   background-color: #ffffff;
-  user-select: none; /* Prevent text selection */
-  -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 #boxContent {
@@ -202,7 +202,7 @@ body {
   outline: none;
   -webkit-appearance: none;
   -moz-appearance: textfield;
-  max-width: 100%; /* Prevents overflow */
+  max-width: 100%;
 }
 
 .editable-value input::-webkit-outer-spin-button,
